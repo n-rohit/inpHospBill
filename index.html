@@ -36,11 +36,11 @@
         <script>
             d1 = new Date(document.getElementById("dofa").value);
             d2= new Date(document.getElementById("dofd").value);
-            days = Math.round((d2.getTime()-d1.getTime())/1000/60/60/24);
         </script>
 
         <table align="center">
-            <tr><td>No. of Days</td><td><input type='number' id='days' size="20" value="days"></td></tr>
+            <tr><td>No. of Days</td><td><input type='number' id='days' size="20" 
+                oninput="document.getElementById('days').value=Math.round((d2.getTime()-d1.getTime())/1000/60/60/24);"></td></tr>
         </table>
 
             <br><br>
