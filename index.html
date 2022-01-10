@@ -26,7 +26,8 @@
                 <table>
                     <tr><td>S/o or D/o</td><td><input type='text' id=pname size="20"></td></tr>
                     <tr><td>Sex</td><td>
-                        <select>        
+                        <select>
+                            <option value="">Select Gender</option>        
                             <option value="m">Male</option>
                             <option value="f">Female</option>
                         </select>
@@ -55,32 +56,32 @@
             </tr>
             <tr>
                 <td>1) Room Charges</td>
-                <td><input type='number' size="20" id="rc_rspd"></td>
-                <td><input type='number' size="20" id="rc_numd"></td>
+                <td><input type='number' size="20" id="rc_rspd" oninput="total_c('rc_rspd','rc_numd','rc_totl')"></td>
+                <td><input type='number' size="20" id="rc_numd" oninput="total_c('rc_rspd','rc_numd','rc_totl')"></td>
                 <td><input type='number' size="20" id="rc_totl" readonly></td>
             </tr>
             <tr>
                 <td>2) Nursing Charges</td>
-                <td><input type='number' size="20" id="nc_rspd"></td>
-                <td><input type='number' size="20" id="nc_numd"></td>
+                <td><input type='number' size="20" id="nc_rspd" oninput="total_c('nc_rspd','nc_numd','nc_totl')"></td>
+                <td><input type='number' size="20" id="nc_numd" oninput="total_c('nc_rspd','nc_numd','nc_totl')"></td>
                 <td><input type='number' size="20" id="nc_totl" readonly></td>
             </tr>
             <tr>
                 <td>3) Doctor Visit</td>
-                <td><input type='number' size="20" id="dv_rspd"></td>
-                <td><input type='number' size="20" id="dv_numd"></td>
+                <td><input type='number' size="20" id="dv_rspd" oninput="total_c('dv_rspd','dv_numd','dv_totl')"></td>
+                <td><input type='number' size="20" id="dv_numd" oninput="total_c('dv_rspd','dv_numd','dv_totl')"></td>
                 <td><input type='number' size="20" id="dv_totl" readonly></td>
             </tr>
             <tr>
                 <td>4) Monitor Machine</td>
-                <td><input type='number' size="20" id="mm_rspd"></td>
-                <td><input type='number' size="20" id="mm_numd"></td>
+                <td><input type='number' size="20" id="mm_rspd" oninput="total_c('mm_rspd','mm_numd','mm_totl')"></td>
+                <td><input type='number' size="20" id="mm_numd" oninput="total_c('mm_rspd','mm_numd','mm_totl')"></td>
                 <td><input type='number' size="20" id="mm_totl" readonly></td>
             </tr>
             <tr>
                 <td>5) Syringe Pump</td>
-                <td><input type='number' size="20" id="sp_rspd"></td>
-                <td><input type='number' size="20" id="sp_numd"></td>
+                <td><input type='number' size="20" id="sp_rspd" oninput="total_c('sp_rspd','sp_numd','sp_totl')"></td>
+                <td><input type='number' size="20" id="sp_numd" oninput="total_c('sp_rspd','sp_numd','sp_totl')"></td>
                 <td><input type='number' size="20" id="sp_totl" readonly></td>
             </tr>
             <tr>
@@ -129,55 +130,17 @@
         dofa.onchange = date_handler;
         dofd.onchange = date_handler;
 
-        rc_rspd = document.getElementById('rc_rspd');
-        rc_numd = document.getElementById('rc_numd');
-        function room_charges(){
-            if(rc_rspd.value != '' && rc_numd.value != ''){
-                document.getElementById('rc_totl').value = rc_rspd.value * rc_numd.value;
+        function total_c(a,b,c){
+            x = document.getElementById(a);
+            y = document.getElementById(b);
+                if(x.value != '' && y.value != ''){
+                    document.getElementById(c).value = x.value * y.value;
+                }
             }
-        }
-        rc_rspd.oninput = room_charges; // We can also use onchange but it will only display the total after Rs per Day...
-        rc_numd.oninput = room_charges; // ...and Number of Days have been entered and Enter or some other place is clicked
 
-        nc_rspd = document.getElementById('nc_rspd');
-        nc_numd = document.getElementById('nc_numd');
-        function nursing_charges(){
-            if(nc_rspd.value != '' && nc_numd.value != ''){
-                document.getElementById('nc_totl').value = nc_rspd.value * nc_numd.value;
-            }
-        }
-        nc_rspd.oninput = nursing_charges;
-        nc_numd.oninput = nursing_charges;
-        
-        dv_rspd = document.getElementById('dv_rspd');
-        dv_numd = document.getElementById('dv_numd');
-        function doctor_visit(){
-            if(dv_rspd.value != '' && dv_numd.value != ''){
-                document.getElementById('dv_totl').value = dv_rspd.value * dv_numd.value;
-            }
-        }
-        dv_rspd.oninput = doctor_visit;
-        dv_numd.oninput = doctor_visit;
-        
-        mm_rspd = document.getElementById('mm_rspd');
-        mm_numd = document.getElementById('mm_numd');
-        function monitor_machine(){
-            if(mm_rspd.value != '' && mm_numd.value != ''){
-                document.getElementById('mm_totl').value = mm_rspd.value * mm_numd.value;
-            }
-        }
-        mm_rspd.oninput = monitor_machine;
-        mm_numd.oninput = monitor_machine;
-        
-        sp_rspd = document.getElementById('sp_rspd');
-        sp_numd = document.getElementById('sp_numd');
-        function syringe_pump(){
-            if(sp_rspd.value != '' && sp_numd.value != ''){
-                document.getElementById('sp_totl').value = sp_rspd.value * sp_numd.value;
-            }
-        }
-        sp_rspd.oninput = syringe_pump;
-        sp_numd.oninput = syringe_pump;
+            // We can also use onchange but it will only display the total after Rs per Day & ...
+            // ...Number of Days have been entered and Enter or some other place is clicked
+            // oninput shows latest output immediately as we are typing the values
         
         function calculate_total(){
             document.getElementById('total').value = Number(document.getElementById('rc_totl').value) + 
