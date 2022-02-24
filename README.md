@@ -1,4 +1,4 @@
-<h3> View the Page: https://github.com/n-rohit/inpHospBill </h3>
+<h3> View the Page: https://n-rohit.github.io/inpHospBill/ </h3>
 
 <br>
 
